@@ -1,25 +1,33 @@
 import React, {useState} from 'react'
-
+import { useAddDestinationMutation} from '../api/DestinationApi';
 function AddDestination() {
     const [newCity, setNewCity] = useState("");
     const [newCountry, setNewCountry] = useState("");
+    const [addDestinationMutation] = useAddDestinationMutation();
+
 
     const handelSubmit = (e)=>{
         e.preventDefault();
         //addDestination
+        addDestinationMutation({
+            id: Math.random()*100,
+          city: newCity,
+          country: newCountry,
+          daysNeeded: parseInt(Math.random() * 10) + 1, 
+        });
         setNewCity("");
         setNewCountry("");
     }
   return (
     <div className="p-4 border">
-        <form action="">
+        <form onSubmit={handelSubmit}>
             <div className="row col-8 offset-2">
                 <h4>Enter a Destination</h4>
                 <div className="col-5 p-1">
-                    <input type="text" className="form-control" placeholder="Enter city..." value={newCity} onClick={e=>setNewCity(e.target.value)}/>
+                    <input type="text" className="form-control" placeholder="Enter city..." value={newCity} onChange={e=>setNewCity(e.target.value)}/>
                 </div>
                 <div className="col-5 p-1">
-                    <input type="text" className="form-control" placeholder="Enter country..." value={newCountry} onClick={e=>setNewCountry(e.target.value)}/>
+                    <input type="text" className="form-control" placeholder="Enter country..." value={newCountry} onChange={e=>setNewCountry(e.target.value)}/>
                 </div>
                 <div className="col-2 p-1">
                     <button className="btn btn-success form-control">Add</button>
