@@ -11,6 +11,12 @@
       "city": "kathmandu",
       "country": "Nepal",
       "daysNeeded": 2
+    },
+    {
+      "id": 46.11596129577072,
+      "city": "New Delhi",
+      "country": "Bharat",
+      "daysNeeded": 5
     }
   ]
 }
