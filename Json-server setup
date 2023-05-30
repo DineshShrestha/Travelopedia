@@ -1,0 +1,9 @@
+To install json-server on project
+> npm install -g json-server
+
+To get started:
+> create the folder outside src on project with folder name data
+> create the file with name as required for example traveldb.json
+
+To run the server:
+> json-server --watch data/traveldb.json --port 5001 (you can define your own port)
