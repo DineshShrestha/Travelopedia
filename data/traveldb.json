@@ -17,6 +17,12 @@
       "city": "test",
       "country": "test",
       "daysNeeded": 4
+    },
+    {
+      "id": 95.52222243840379,
+      "city": "kathmandu ",
+      "country": "Nepal",
+      "daysNeeded": 2
     }
   ]
 }
