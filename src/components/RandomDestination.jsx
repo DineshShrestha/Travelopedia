@@ -12,7 +12,7 @@ function RandomDestination() {
                 {data.city}, {data.country}
             </div>
         }else if(isError){
-            content= <p>{error}</p>
+            content= <p>{error?.error || error?.data?.message || "Something went wrong loading this destination."}</p>
         }
   return (
     <div className='pt-3'>{content}</div>

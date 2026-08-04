@@ -15,7 +15,7 @@ function DestinationList() {
                 )
             })
         }else if(isError){
-            content= <p>{error}</p>
+            content= <p>{error?.error || error?.data?.message || "Something went wrong loading destinations."}</p>
         }
   return (
     <div className='pt-3'>{content}</div>
