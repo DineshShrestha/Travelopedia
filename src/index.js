@@ -10,8 +10,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Header/>
-      <DestinationIndex/>
-      <RandomDestination/>
+      <main className="container py-4" style={{maxWidth: "720px"}}>
+        <DestinationIndex/>
+        <RandomDestination/>
+      </main>
     </Provider>
   </React.StrictMode>
 );

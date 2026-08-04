@@ -3,38 +3,39 @@ import { useAddDestinationMutation} from '../api/DestinationApi';
 function AddDestination() {
     const [newCity, setNewCity] = useState("");
     const [newCountry, setNewCountry] = useState("");
-    const [addDestinationMutation] = useAddDestinationMutation();
-
+    const [addDestinationMutation, {isLoading}] = useAddDestinationMutation();
 
     const handelSubmit = (e)=>{
         e.preventDefault();
-        //addDestination
         addDestinationMutation({
             id: Math.random()*100,
           city: newCity,
           country: newCountry,
-          daysNeeded: parseInt(Math.random() * 10) + 1, 
+          daysNeeded: parseInt(Math.random() * 10) + 1,
         });
         setNewCity("");
         setNewCountry("");
     }
   return (
-    <div className="p-4 border">
-        <form onSubmit={handelSubmit}>
-            <div className="row col-8 offset-2">
-                <h4>Enter a Destination</h4>
-                <div className="col-5 p-1">
-                    <input type="text" className="form-control" placeholder="Enter city..." value={newCity} onChange={e=>setNewCity(e.target.value)}/>
-                </div>
-                <div className="col-5 p-1">
-                    <input type="text" className="form-control" placeholder="Enter country..." value={newCountry} onChange={e=>setNewCountry(e.target.value)}/>
-                </div>
-                <div className="col-2 p-1">
-                    <button className="btn btn-success form-control">Add</button>
-                </div>
+    <form onSubmit={handelSubmit} className="row g-2 mb-4">
+        <div className="col-md-5">
+            <div className="form-floating">
+                <input type="text" id="newCity" className="form-control" placeholder="City" value={newCity} onChange={e=>setNewCity(e.target.value)} required/>
+                <label htmlFor="newCity">City</label>
             </div>
-        </form>
-    </div>
+        </div>
+        <div className="col-md-5">
+            <div className="form-floating">
+                <input type="text" id="newCountry" className="form-control" placeholder="Country" value={newCountry} onChange={e=>setNewCountry(e.target.value)} required/>
+                <label htmlFor="newCountry">Country</label>
+            </div>
+        </div>
+        <div className="col-md-2">
+            <button className="btn btn-success w-100 h-100 d-flex align-items-center justify-content-center gap-1" disabled={isLoading}>
+                <i className="bi bi-plus-lg"></i> Add
+            </button>
+        </div>
+    </form>
   )
 }
 
